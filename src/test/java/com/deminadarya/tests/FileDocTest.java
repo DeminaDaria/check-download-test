@@ -14,11 +14,12 @@ import java.util.List;
 
 public class FileDocTest {
 
+    TestData testData = new TestData();
+
     @Test
     void shouldHaveDocxParagraphCount() throws IOException {
-        String docxFilePath = "src/test/resources/files/5.docx";
         int expectedData = 75;
-        XWPFDocument document = new XWPFDocument(new FileInputStream(docxFilePath));
+        XWPFDocument document = new XWPFDocument(new FileInputStream(testData.getDocxFilePath()));
         List<XWPFParagraph> paragraphs = document.getParagraphs();
         int paragraphCount = paragraphs.size();
 
@@ -29,11 +30,10 @@ public class FileDocTest {
     void shouldHaveDocxFileContent() throws IOException {
         XWPFWordExtractor extractor;
         XWPFDocument document;
-        String docxFilePath = "src/test/resources/files/5.docx";
         String expectedData = "Свойства Бэкенда";
 
         try {
-            document = new XWPFDocument(OPCPackage.open(new FileInputStream(docxFilePath)));
+            document = new XWPFDocument(OPCPackage.open(new FileInputStream(testData.getDocxFilePath())));
             extractor = new XWPFWordExtractor(document);
             String wordText = extractor.getText();
 

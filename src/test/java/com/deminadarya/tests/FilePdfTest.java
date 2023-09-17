@@ -12,26 +12,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FilePdfTest {
 
+    TestData testData = new TestData();
+
     @Test
     void shouldPdfHaveContent() throws IOException {
-        String pdfFilePath = "src/test/resources/files/2.pdf";
-        PDF pdf = new PDF(new File(pdfFilePath));
+        PDF pdf = new PDF(new File(testData.getPdfFilePath()));
         assertThat(pdf, containsText("wanted@funbox.ru"));
     }
 
     @Test
     void PdfFilePageCount() throws IOException {
-        String pdfFilePath = "src/test/resources/files/2.pdf";
-        PDF pdf = new PDF(new File(pdfFilePath));
+        PDF pdf = new PDF(new File(testData.getPdfFilePath()));
         int pageCount = pdf.numberOfPages;
         assertEquals(6, pageCount);
     }
 
     @Test
     void PdfFileGetTitle() throws IOException {
-        String pdfFilePath = "src/test/resources/files/2.pdf";
         String expectedTitle = "Квалификационные задания для Ruby разработчиков";
-        PDF pdf = new PDF(new File(pdfFilePath));
+        PDF pdf = new PDF(new File(testData.getPdfFilePath()));
         String title = pdf.title;
         assertEquals(expectedTitle, title);
     }
