@@ -6,6 +6,7 @@ public class TestData {
     private String pdfFilePath = "src/test/resources/files/2.pdf";
     private String txtFilePath = "src/test/resources/files/1.txt";
     private String xlsFilePath = "src/test/resources/files/3.xlsx";
+    private String zipFilePath = "src/test/resources/files/4.zip";
 
     public String getDocxFilePath() {
         return docxFilePath;
@@ -21,5 +22,9 @@ public class TestData {
 
     public String getXlsFilePath() {
         return xlsFilePath;
+    }
+
+    public String getZipFilePath() {
+        return zipFilePath;
     }
 }
